@@ -73,16 +73,31 @@ const MainContent = () => {
       ): ( <div className="py-0 px-[5%] max-h-[70vh] overflow-y-scroll scrollbar-hidden">
         <div className="my-10 mx-0 flex items-center gap-5">
         <FaUserCircle className="text-3xl" />
-        <p> {recentPrompt} </p>
+        <p className="text-lg font-[400] leading-[1.8]"> {recentPrompt} </p>
         </div>
         <div className="flex items-start gap-5">
         <img src="{GeminiLogo}" alt="" className="w-8 rounded-[50%]" />
+        
+        
+        
+        {loading ? (
+          
+          <div className="w-full flex flex-col gap-2">
+          <hr className="rounded-md border-none bg-gray-200 bg-gradient-to-tr from-[#81cafe]  via-[#fffffff] to-[#81cafe] p-4 animate-scroll-bg"/>
 
-        <p>{resultData}</p>
+          <hr className="rounded-md border-none bg-gray-200 bg-gradient-to-tr from-[#81cafe]  via-[#fffffff] to-[#81cafe] p-4 animate-scroll-bg"/>
+
+          <hr className="rounded-md border-none bg-gray-200 bg-gradient-to-tr from-[#81cafe]  via-[#fffffff] to-[#81cafe] p-4 animate-scroll-bg"/>
+
+
+         </div>  
+        <p dangerouslySetInnerHTML={{__html: resultData }} className="text-lg font-[400] leading-[1.8]">{resultData}</p> :}
+
+       
           
           </div> 
       </div>
-      )}
+      ) : (
       
 
     <div className="absolute bottom-0 w-full max-w-[900px] px-5 mx-auto mt-5">
@@ -105,6 +120,6 @@ const MainContent = () => {
   </div>
   </div>
   
-}
+      )
 
 export default MainContent

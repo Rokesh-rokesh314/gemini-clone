@@ -7,6 +7,13 @@ import { IoSettings } from "react-icons/io5";
 
 const Sidebar = () => {
   const [ extended, setExtended] = useState(false)
+  const {onSent, prevPrompt, setRecentPrompt } = useContext(Context)
+
+  const loadPrompt =async(prompt) => {
+    setRecentPrompt(prompt)
+
+    await onSent(prompt)
+  }
   return (
     <div className="min-h-screen inline-flex flex-col justify-between bg-[#e4e7eb] py-[25px] px-[15px]">
    <div>
@@ -19,10 +26,17 @@ const Sidebar = () => {
        {extended && (
         <div className="flex flex-col">
           <p className="mt-7 mb-5">Recent</p>
-          <div className="flex items-center gap-2 p-2 pr-10  rounded-[50px] text-slate-700 cursor-pointer hover:bg-gray-300">
+          {prevPrompt?.map((item, index) => {
+            return(
+              <div onClick={() => loadPrompt(item)} 
+              className="flex items-center gap-2 p-2 pr-10  rounded-[50px] text-slate-700 cursor-pointer hover:bg-gray-300">
             <FaMessage className="text-2xl" />
-            <p>What is Java?</p>
+            <p>{item.slice(0,18)...}</p>
           </div>
+            )
+
+          )}}
+          
         </div>
        )}
       </div>
