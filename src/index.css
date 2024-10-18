@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Hide scrollbar from Chrome , Saafari and Opera */
+
+ scrollbar-hidden {
+  -ms-overflow-style: none;
+ }
+
+ scrollbar-hidden {
+  scrollbar-width: none;
+ }
+
+
+ scrollbar-hidden {
+  overflow:auto;
+ }
+
+
+
+
+
+
